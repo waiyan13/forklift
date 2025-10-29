@@ -15,21 +15,6 @@
     "promise"
   ],
   "rules": {
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "object",
-          "type"
-        ]
-      }
-    ],
     "react/react-in-jsx-scope": "off"
   }
 }

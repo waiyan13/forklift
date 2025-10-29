@@ -15,7 +15,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "all": "off",
+      "recommended": false,
       "nursery": {
         "useSortedClasses": "error"
       }
@@ -31,11 +31,16 @@
       "indentStyle": "space"
     }
   },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "assist": {
     "enabled": true,
     "actions": {
       "source": {
-        "organizeImports": "on"
+        "organizeImports": "off"
       }
     }
   }
