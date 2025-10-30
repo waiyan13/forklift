@@ -3,12 +3,16 @@ import { lazy } from "react";
 
 import { Route, Routes } from "react-router";
 
-const BaseLayout = lazy(() => import("@/layouts/base-layout"));
+import AppRoutes from "./routes";
+
+// Pages
+const LandingPage = lazy(() => import("./pages/landing"));
 
 function AppRouter() {
   return (
     <Routes>
-      <Route path="/" element={<BaseLayout />} />
+      <Route path="/" element={<LandingPage />} />
+      {AppRoutes()}
     </Routes>
   );
 }
