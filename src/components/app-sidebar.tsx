@@ -48,7 +48,7 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
-      <SidebarHeader>
+      <SidebarHeader className="h-10">
         <h1 className="pl-2 font-sans">Forklift</h1>
       </SidebarHeader>
       <SidebarContent className="gap-0">
