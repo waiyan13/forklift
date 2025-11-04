@@ -15,8 +15,9 @@ function AppRoutes() {
     <Route element={<BaseLayout />}>
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/settings">
-        <Route path="uoms" element={<UomPage />} />
+        <Route path="measurement-units" element={<UomPage />} />
       </Route>
+      <Route path="*" element={<DashboardPage />} />
     </Route>
   );
 }

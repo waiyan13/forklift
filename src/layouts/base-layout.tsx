@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Link, Outlet, useLocation } from "react-router";
 
 import { AppSidebar } from "@/components/app-sidebar";
 import {
@@ -17,6 +17,9 @@ import {
 } from "@/components/ui/sidebar";
 
 function BaseLayout() {
+  const location = useLocation();
+  const segments = location.pathname.split("/").filter(Boolean);
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -26,13 +29,22 @@ function BaseLayout() {
           <Separator orientation="vertical" className="mr-2 h-4" />
           <Breadcrumb>
             <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="#">Inventory</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Items</BreadcrumbPage>
-              </BreadcrumbItem>
+              {segments.map((segment, index) => (
+                <>
+                  <BreadcrumbItem className="hidden md:block">
+                    <BreadcrumbLink asChild>
+                      <Link to={location.pathname}>
+                        {segment
+                          .replaceAll("-", " ")
+                          .replace(/\b\w/g, (c) => c.toUpperCase())}
+                      </Link>
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  {index < segments.length -1 && (
+                    <BreadcrumbSeparator className="hidden md:block" />
+                  )}
+                </>
+              ))}
             </BreadcrumbList>
           </Breadcrumb>
         </header>
