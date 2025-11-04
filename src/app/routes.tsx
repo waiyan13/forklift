@@ -8,15 +8,22 @@ const BaseLayout = lazy(() => import("@/layouts/base-layout"));
 
 // Pages
 const DashboardPage = lazy(() => import("./pages/dashboard"));
+const ItemPage = lazy(() => import("./pages/items"));
 const UomPage = lazy(() => import("./pages/uoms"));
 
 function AppRoutes() {
   return (
     <Route element={<BaseLayout />}>
       <Route path="/dashboard" element={<DashboardPage />} />
+
       <Route path="/settings">
         <Route path="measurement-units" element={<UomPage />} />
       </Route>
+
+      <Route path="/inventory">
+        <Route path="items" element={<ItemPage />} />
+      </Route>
+
       <Route path="*" element={<DashboardPage />} />
     </Route>
   );
