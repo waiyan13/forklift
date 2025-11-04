@@ -7,10 +7,18 @@ import App from "./app/app";
 // oxlint-disable-next-line eslint-plugin-import/no-unassigned-import
 import "./index.css";
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>,
-);
+async function enableMocking() {
+  const { worker } = await import("./mocks/browser");
+  return worker.start();
+}
+
+// oxlint-disable-next-line eslint-plugin-promise/always-return
+enableMocking().then(() => {
+  createRoot(document.getElementById("root")!).render(
+    <StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StrictMode>,
+  );
+});

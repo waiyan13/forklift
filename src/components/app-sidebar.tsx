@@ -1,4 +1,6 @@
 import * as React from "react";
+
+import { Link } from "react-router";
 import { ChevronRight } from "lucide-react";
 
 import {
@@ -18,42 +20,16 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-
-// This is sample data.
-const data = {
-  navMain: [
-    {
-      title: "Inventory",
-      url: "/",
-      items: [
-        {
-          title: "Items",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "/",
-      items: [
-        {
-          title: "Measurment Units",
-          url: "#",
-        },
-      ],
-    },
-  ],
-};
+import { NAV_MAINS } from "@/config";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
       <SidebarHeader className="h-10">
-        <h1 className="pl-2 font-sans">Forklift</h1>
+        <h1 className="pl-2">Forklift</h1>
       </SidebarHeader>
       <SidebarContent className="gap-0">
-        {/* We create a collapsible SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
+        {NAV_MAINS.map((item) => (
           <Collapsible
             key={item.title}
             title={item.title}
@@ -63,24 +39,40 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarGroup>
               <SidebarGroupLabel
                 asChild
-                className="group/label font-sans text-base text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                className="group/label text-base text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
               >
-                <CollapsibleTrigger>
-                  {item.title}{" "}
-                  <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
-                </CollapsibleTrigger>
+                {item.url ? (
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      className="pl-0 text-base"
+                      asChild
+                      isActive={false}
+                    >
+                      <a href={item.url}>
+                        {item.icon && <item.icon />}
+                        {item.title}
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ) : (
+                  <CollapsibleTrigger className="space-x-2">
+                    {item.icon && <item.icon />}
+                    <span>{item.title} </span>
+                    <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                  </CollapsibleTrigger>
+                )}
               </SidebarGroupLabel>
               <CollapsibleContent>
                 <SidebarGroupContent>
                   <SidebarMenu>
-                    {item.items.map((item) => (
-                      <SidebarMenuItem key={item.title}>
+                    {item.items.map((subItem) => (
+                      <SidebarMenuItem key={subItem.title}>
                         <SidebarMenuButton
                           className="text-sm"
                           asChild
                           isActive={false}
                         >
-                          <a href={item.url}>{item.title}</a>
+                          <Link to={subItem.url}>{subItem.title}</Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
                     ))}

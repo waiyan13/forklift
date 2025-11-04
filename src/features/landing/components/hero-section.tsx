@@ -24,7 +24,7 @@ function HeroSection() {
 
           <h1
             className={cn(
-              `mb-6 text-balance font-bold font-sans text-4xl text-foreground tracking-tight transition-[clip-path,opacity,transform] duration-1000 ease-out sm:text-6xl lg:text-7xl`,
+              `mb-6 text-balance font-bold text-4xl text-foreground tracking-tight transition-[clip-path,opacity,transform] duration-1000 ease-out sm:text-6xl lg:text-7xl`,
               isRevealed
                 ? "translate-y-0 opacity-100 [clip-path:inset(0_0_0_0)]"
                 : "translate-y-8 opacity-0 [clip-path:inset(0_0_100%_0)]",
@@ -33,10 +33,9 @@ function HeroSection() {
             Inventory management that moves your business forward
           </h1>
 
-          <p className="mx-auto mb-10 max-w-2xl text-pretty text-black text-lg leading-relaxed sm:text-xl">
-            Streamline your warehouse operations with real-time tracking,
-            automated workflows, and powerful analytics. Built for businesses
-            that need to scale.
+          <p className="mx-auto mb-10 max-w-2xl text-pretty text-lg text-muted-foreground leading-relaxed sm:text-xl">
+            Streamline your warehouse operations with real-time tracking, and
+            powerful analytics. Built for businesses that need to scale.
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

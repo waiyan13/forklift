@@ -9,7 +9,7 @@ function Header() {
         <div className="flex items-center gap-2">
           <img className="h-4" src="./forklift-logo-transparent.png" />
 
-          <span className="font-sans font-semibold text-foreground text-xl">
+          <span className="font-semibold text-foreground text-xl">
             Forklift
           </span>
         </div>

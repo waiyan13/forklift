@@ -8,11 +8,15 @@ const BaseLayout = lazy(() => import("@/layouts/base-layout"));
 
 // Pages
 const DashboardPage = lazy(() => import("./pages/dashboard"));
+const UomPage = lazy(() => import("./pages/uoms"));
 
 function AppRoutes() {
   return (
     <Route element={<BaseLayout />}>
       <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="/settings">
+        <Route path="uoms" element={<UomPage />} />
+      </Route>
     </Route>
   );
 }
