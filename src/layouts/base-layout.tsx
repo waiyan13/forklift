@@ -40,7 +40,7 @@ function BaseLayout() {
                       </Link>
                     </BreadcrumbLink>
                   </BreadcrumbItem>
-                  {index < segments.length -1 && (
+                  {index < segments.length - 1 && (
                     <BreadcrumbSeparator className="hidden md:block" />
                   )}
                 </>

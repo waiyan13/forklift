@@ -1,9 +1,8 @@
-import type { HTTPError } from "ky";
-
 import { httpClient } from "@/lib/http";
 
 import type { PaginatedResponse } from "@/types";
 import type { UoMResponse } from "@/types/uom";
+import type { HTTPError } from "ky";
 
 async function getUoMs(): Promise<PaginatedResponse<UoMResponse>> {
   try {

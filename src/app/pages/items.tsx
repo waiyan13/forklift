@@ -1,5 +1,5 @@
 function ItemsPage() {
-  return <div>Items</div>
+  return <div>Items</div>;
 }
 
 export default ItemsPage;
