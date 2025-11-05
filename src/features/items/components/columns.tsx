@@ -1,3 +1,6 @@
+import { EllipsisVertical } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
 import type { ColumnDef } from "@tanstack/react-table";
 import type { ItemResponse } from "@/types/item";
 
@@ -33,5 +36,14 @@ export const columns: ColumnDef<ItemColumns>[] = [
   {
     accessorKey: "supplier",
     header: "Supplier",
+  },
+  {
+    id: "actions",
+    header: "Actions",
+    cell: () => (
+      <Button size="icon" variant="ghost">
+        <EllipsisVertical />
+      </Button>
+    ),
   },
 ];
