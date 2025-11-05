@@ -11,7 +11,7 @@ import { DataTableSkeleton } from "@/components/data-table-skeleton";
 
 function UoMPage() {
   return (
-    <div className="mx-auto flex w-2/3 flex-col space-y-4">
+    <div className="mx-auto flex w-full flex-col space-y-4 md:w-2/3">
       <UomHeader />
       <QueryErrorResetBoundary>
         {({ reset }) => (
