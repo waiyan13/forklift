@@ -5,5 +5,6 @@ export interface ItemResponse {
   quantity: number;
   unit: string;
   unitCost: number;
+  currency: string;
   supplier: string;
 }
