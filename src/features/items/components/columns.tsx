@@ -1,4 +1,6 @@
 import { EllipsisVertical } from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 import type { ColumnDef } from "@tanstack/react-table";
@@ -24,14 +26,17 @@ export const columns: ColumnDef<ItemColumns>[] = [
   {
     accessorKey: "category",
     header: "Category",
+    cell: (info) => <Badge>{info.getValue() as string}</Badge>,
   },
   {
     accessorKey: "quantity",
     header: "Quantity",
+    meta: { align: "right" },
   },
   {
     accessorKey: "unitCost",
     header: "Unit Cost",
+    meta: { align: "right" },
   },
   {
     accessorKey: "supplier",

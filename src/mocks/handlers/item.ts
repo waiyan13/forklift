@@ -53,7 +53,7 @@ export const handlers = [
           {
             name: "Mackerel",
             sku: "005",
-            category: "Fish",
+            category: "fish",
             quantity: 500,
             unit: "g",
             unitCost: 10,

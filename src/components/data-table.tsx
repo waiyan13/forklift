@@ -34,7 +34,13 @@ function DataTable<TData, TValue>({
             <TableRow className="bg-amber-600/10" key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <TableHead
-                  className={cn("text-foreground/70 text-lg", header.column.columnDef.meta?.className ?? "")}
+                  className={cn(
+                    "text-foreground/70 text-lg",
+                    header.column.columnDef.meta?.className ?? "",
+                    header.column.columnDef.meta?.align === "right"
+                      ? "text-right"
+                      : "",
+                  )}
                   key={header.id}
                 >
                   {header.isPlaceholder
@@ -59,6 +65,9 @@ function DataTable<TData, TValue>({
                   className={cn(
                     "text-md",
                     cell.column.columnDef.meta?.className ?? "",
+                    cell.column.columnDef.meta?.align === "right"
+                      ? "text-right"
+                      : "",
                   )}
                   key={cell.id}
                 >
