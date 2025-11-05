@@ -36,6 +36,7 @@ const FormField = <
   ...props
 }: ControllerProps<TFieldValues, TName>) => {
   return (
+    // oxlint-disable-next-line eslint-plugin-react-perf/jsx-no-new-object-as-prop
     <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />
     </FormFieldContext.Provider>
@@ -77,6 +78,7 @@ function FormItem({ className, ...props }: React.ComponentProps<"div">) {
   const id = React.useId();
 
   return (
+    // oxlint-disable-next-line eslint-plugin-react-perf/jsx-no-new-object-as-prop
     <FormItemContext.Provider value={{ id }}>
       <div
         data-slot="form-item"

@@ -27,6 +27,7 @@ function NewItemForm() {
           <FormField
             control={control}
             name="name"
+            //oxlint-disable-next-line eslint-plugin-react-perf/jsx-no-new-function-as-prop
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Name</FormLabel>
@@ -40,6 +41,7 @@ function NewItemForm() {
           <FormField
             control={control}
             name="unit"
+            //oxlint-disable-next-line eslint-plugin-react-perf/jsx-no-new-function-as-prop
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Unit</FormLabel>

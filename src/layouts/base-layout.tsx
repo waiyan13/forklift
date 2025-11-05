@@ -6,7 +6,6 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
@@ -30,7 +29,7 @@ function BaseLayout() {
           <Breadcrumb>
             <BreadcrumbList>
               {segments.map((segment, index) => (
-                <>
+                <div className="flex items-center space-x-2" key={segment}>
                   <BreadcrumbItem className="hidden md:block">
                     <BreadcrumbLink asChild>
                       <Link to={location.pathname}>
@@ -43,7 +42,7 @@ function BaseLayout() {
                   {index < segments.length - 1 && (
                     <BreadcrumbSeparator className="hidden md:block" />
                   )}
-                </>
+                </div>
               ))}
             </BreadcrumbList>
           </Breadcrumb>
