@@ -37,6 +37,15 @@ export const columns: ColumnDef<ItemColumns>[] = [
     accessorKey: "unitCost",
     header: "Unit Cost",
     meta: { align: "right" },
+    cell: (info) => {
+      const currency = (info.getValue() as string).split(" ");
+      return (
+        <>
+          <span className="tabular-nums">{currency[0]}</span>&nbsp;
+          <span className="text-foreground/70">{currency[1]}</span>
+        </>
+      );
+    },
   },
   {
     accessorKey: "supplier",
