@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { cn } from "@/lib/utils";
 
 import type { DataTableProps } from "@/types/table";
 
@@ -33,7 +34,7 @@ function DataTable<TData, TValue>({
             <TableRow className="bg-amber-600/10" key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <TableHead
-                  className="text-foreground/70 text-lg"
+                  className={cn("text-foreground/70 text-lg", header.column.columnDef.meta?.className ?? "")}
                   key={header.id}
                 >
                   {header.isPlaceholder
@@ -54,7 +55,13 @@ function DataTable<TData, TValue>({
               data-state={row.getIsSelected() && "selected"}
             >
               {row.getVisibleCells().map((cell) => (
-                <TableCell className="text-md" key={cell.id}>
+                <TableCell
+                  className={cn(
+                    "text-md",
+                    cell.column.columnDef.meta?.className ?? "",
+                  )}
+                  key={cell.id}
+                >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </TableCell>
               ))}

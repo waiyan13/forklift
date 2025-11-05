@@ -40,6 +40,7 @@ export const columns: ColumnDef<ItemColumns>[] = [
   {
     id: "actions",
     header: "Actions",
+    meta: { align: "right", className: "w-0 whitespace-nowrap text-right" },
     cell: () => (
       <Button size="icon" variant="ghost">
         <EllipsisVertical />
