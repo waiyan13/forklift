@@ -27,12 +27,12 @@ function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md border">
-      <Table>
+    <div className="overflow-x-auto rounded-md border">
+      <Table className="min-w-full">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow className="bg-amber-600/10" key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
+              {headerGroup.headers.map((header, index) => (
                 <TableHead
                   className={cn(
                     "text-foreground/70 text-lg",
@@ -40,6 +40,7 @@ function DataTable<TData, TValue>({
                     header.column.columnDef.meta?.align === "right"
                       ? "text-right"
                       : "",
+                    index === 0 ? "sticky left-0 z-1 bg-[#f7ebe0]" : "",
                   )}
                   key={header.id}
                 >
@@ -60,13 +61,16 @@ function DataTable<TData, TValue>({
               key={row.id}
               data-state={row.getIsSelected() && "selected"}
             >
-              {row.getVisibleCells().map((cell) => (
+              {row.getVisibleCells().map((cell, index) => (
                 <TableCell
                   className={cn(
                     "text-md",
                     cell.column.columnDef.meta?.className ?? "",
                     cell.column.columnDef.meta?.align === "right"
                       ? "text-right"
+                      : "",
+                    index === 0
+                      ? "sticky left-0 z-1 bg-background/80 backdrop-blur hover:bg-muted/50 md:bg-background md:backdrop-blur-none"
                       : "",
                   )}
                   key={cell.id}
