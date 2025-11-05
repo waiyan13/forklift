@@ -35,7 +35,7 @@ export const handlers = [
             sku: "003",
             category: "cooking oil",
             quantity: 10,
-            unit: "",
+            unit: "L",
             unitCost: 0.2,
             currency: "THB",
             supplier: "Tops",
