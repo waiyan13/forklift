@@ -19,7 +19,7 @@ function useGetItems() {
       content: content.map(({ unit, currency, ...item }) => ({
         ...item,
         quantity: `${item.quantity} ${unit}`,
-        unitCost: `${currency} ${item.unitCost}`,
+        unitCost: `${item.unitCost.toFixed(2)} ${currency}`,
       })),
     }),
   });
