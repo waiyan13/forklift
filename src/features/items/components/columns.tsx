@@ -1,7 +1,10 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import type { ItemResponse } from "@/types/item";
 
-export type ItemColumns = Omit<ItemResponse, "quantity" | "unit" | "currency" | "unitCost"> & {
+export type ItemColumns = Omit<
+  ItemResponse,
+  "quantity" | "unit" | "currency" | "unitCost"
+> & {
   quantity: string;
   unitCost: string;
 };
@@ -17,7 +20,7 @@ export const columns: ColumnDef<ItemColumns>[] = [
   },
   {
     accessorKey: "category",
-    header: "Name",
+    header: "Category",
   },
   {
     accessorKey: "quantity",

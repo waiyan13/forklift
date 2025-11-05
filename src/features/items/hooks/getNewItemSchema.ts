@@ -15,20 +15,13 @@ const getNewItemSchema = () =>
       .string()
       .trim()
       .min(1, { error: "Please choose at least one category." }),
-    quantity: z
-      .number()
-      .nonnegative()
-      .gte(1),
+    quantity: z.number().nonnegative().gte(1),
     unit: z
       .string()
       .trim()
       .min(1, { error: "Please choose at least one unit." }),
-    unitCost: z
-      .number()
-      .nonnegative(),
-    currency: z
-      .string()
-      .trim(),
+    unitCost: z.number().nonnegative(),
+    currency: z.string().trim(),
     supplier: z
       .string()
       .trim()
