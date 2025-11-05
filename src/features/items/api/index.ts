@@ -1,13 +1,13 @@
 import { httpClient } from "@/lib/http";
 
 import type { PaginatedResponse } from "@/types";
-import type { UoMResponse } from "@/types/uom";
+import type { ItemResponse } from "@/types/item";
 import type { HTTPError } from "ky";
 
-async function getUoMs(): Promise<PaginatedResponse<UoMResponse>> {
+async function getItems(): Promise<PaginatedResponse<ItemResponse>> {
   try {
     const response = await httpClient
-      .get<PaginatedResponse<UoMResponse>>("uoms")
+      .get<PaginatedResponse<ItemResponse>>("items")
       .json();
     return response;
   } catch (error) {
@@ -15,4 +15,4 @@ async function getUoMs(): Promise<PaginatedResponse<UoMResponse>> {
   }
 }
 
-export { getUoMs };
+export { getItems };

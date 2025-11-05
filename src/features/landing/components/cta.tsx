@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -15,9 +17,16 @@ function CTA() {
             <span className="block">Start your free 14-day trial today.</span>
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-              Start Free Trial
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="w-full sm:w-auto"
+            >
+              <Link to="dashboard">
+                Start Free Trial
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>

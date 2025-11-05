@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { Link } from "react-router";
+import { ArrowRight } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -17,11 +17,6 @@ function HeroSection() {
     <section className="relative overflow-hidden border-border border-b bg-background py-8 sm:py-16">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-4xl text-center">
-          <Badge variant="secondary" className="mb-6 text-sm">
-            <CheckCircle2 className="mr-1 h-3 w-3" />
-            Trusted by 5,000+ businesses worldwide
-          </Badge>
-
           <h1
             className={cn(
               `mb-6 text-balance font-bold text-4xl text-foreground tracking-tight transition-[clip-path,opacity,transform] duration-1000 ease-out sm:text-6xl lg:text-7xl`,
@@ -39,9 +34,11 @@ function HeroSection() {
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" className="w-full sm:w-auto">
-              Start Free Trial
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button asChild size="lg" className="w-full sm:w-auto">
+              <Link to="dashboard">
+                Start Free Trial
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>

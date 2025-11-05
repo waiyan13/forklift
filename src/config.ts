@@ -29,7 +29,7 @@ export const NAV_MAINS = [
     items: [
       {
         title: "Measurment Units",
-        url: "settings/uoms",
+        url: "settings/measurement-units",
       },
     ],
   },

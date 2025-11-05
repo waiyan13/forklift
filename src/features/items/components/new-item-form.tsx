@@ -8,29 +8,29 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { useNewUoMForm } from "@/features/uoms/hooks/useNewUoMForm";
+import { useNewItemForm } from "@/features/items/hooks/useNewItemForm";
 
 const sleep = () => new Promise((resolve) => setTimeout(() => resolve, 1000));
 
-function NewUoMForm() {
-  const form = useNewUoMForm();
+function NewItemForm() {
+  const form = useNewItemForm();
   const { control, handleSubmit } = form;
 
-  const onNewUoMSubmit = async () => {
+  const onNewItemSubmit = async () => {
     await sleep();
   };
 
   return (
     <Form {...form}>
-      <form id="new-uom-form" onSubmit={handleSubmit(onNewUoMSubmit)}>
+      <form id="new-item-form" onSubmit={handleSubmit(onNewItemSubmit)}>
         <div className="flex flex-col space-y-4 px-4">
           <FormField
             control={control}
-            name="unit"
-            // oxlint-disable-next-line eslint-plugin-react-perf/jsx-no-new-function-as-prop
+            name="name"
+            //oxlint-disable-next-line eslint-plugin-react-perf/jsx-no-new-function-as-prop
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Unit</FormLabel>
+                <FormLabel>Name</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -40,11 +40,11 @@ function NewUoMForm() {
           />
           <FormField
             control={control}
-            name="name"
-            // oxlint-disable-next-line eslint-plugin-react-perf/jsx-no-new-function-as-prop
+            name="unit"
+            //oxlint-disable-next-line eslint-plugin-react-perf/jsx-no-new-function-as-prop
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Unit</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -58,4 +58,4 @@ function NewUoMForm() {
   );
 }
 
-export default NewUoMForm;
+export default NewItemForm;

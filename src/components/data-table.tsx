@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { cn } from "@/lib/utils";
 
 import type { DataTableProps } from "@/types/table";
 
@@ -26,14 +27,21 @@ function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md border">
-      <Table>
+    <div className="overflow-x-auto rounded-md border">
+      <Table className="min-w-full">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow className="bg-amber-600/10" key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
+              {headerGroup.headers.map((header, index) => (
                 <TableHead
-                  className="text-foreground/70 text-lg"
+                  className={cn(
+                    "text-foreground/70 text-lg",
+                    header.column.columnDef.meta?.className ?? "",
+                    header.column.columnDef.meta?.align === "right"
+                      ? "text-right"
+                      : "",
+                    index === 0 ? "sticky left-0 z-1 bg-[#f7ebe0]" : "",
+                  )}
                   key={header.id}
                 >
                   {header.isPlaceholder
@@ -48,26 +56,30 @@ function DataTable<TData, TValue>({
           ))}
         </TableHeader>
         <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell className="text-md" key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell className="h-24 text-center" colSpan={columns.length}>
-                No results
-              </TableCell>
+          {table.getRowModel().rows.map((row) => (
+            <TableRow
+              key={row.id}
+              data-state={row.getIsSelected() && "selected"}
+            >
+              {row.getVisibleCells().map((cell, index) => (
+                <TableCell
+                  className={cn(
+                    "text-md",
+                    cell.column.columnDef.meta?.className ?? "",
+                    cell.column.columnDef.meta?.align === "right"
+                      ? "text-right"
+                      : "",
+                    index === 0
+                      ? "sticky left-0 z-1 bg-background/80 backdrop-blur hover:bg-muted/50 md:bg-background md:backdrop-blur-none"
+                      : "",
+                  )}
+                  key={cell.id}
+                >
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </TableCell>
+              ))}
             </TableRow>
-          )}
+          ))}
         </TableBody>
       </Table>
     </div>

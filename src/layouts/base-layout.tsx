@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Link, Outlet, useLocation } from "react-router";
 
 import { AppSidebar } from "@/components/app-sidebar";
 import {
@@ -6,7 +6,6 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
@@ -17,22 +16,34 @@ import {
 } from "@/components/ui/sidebar";
 
 function BaseLayout() {
+  const location = useLocation();
+  const segments = location.pathname.split("/").filter(Boolean);
+
   return (
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="sticky top-0 flex h-10 shrink-0 items-center gap-2 border-b bg-background px-4">
+        <header className="sticky top-0 z-2 flex h-10 shrink-0 items-center gap-2 border-b bg-background px-4">
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
           <Breadcrumb>
             <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="#">Inventory</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Items</BreadcrumbPage>
-              </BreadcrumbItem>
+              {segments.map((segment, index) => (
+                <div className="flex items-center space-x-2" key={segment}>
+                  <BreadcrumbItem className="hidden md:block">
+                    <BreadcrumbLink asChild>
+                      <Link to={location.pathname}>
+                        {segment
+                          .replaceAll("-", " ")
+                          .replace(/\b\w/g, (c) => c.toUpperCase())}
+                      </Link>
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  {index < segments.length - 1 && (
+                    <BreadcrumbSeparator className="hidden md:block" />
+                  )}
+                </div>
+              ))}
             </BreadcrumbList>
           </Breadcrumb>
         </header>
