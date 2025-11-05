@@ -1,19 +1,12 @@
 import { DataTable } from "@/components/data-table";
+import { useGetItems } from "@/features/items/hooks/useGetItems";
 
 import { columns } from "./columns";
-import { useGetItems } from "./hooks/useGetItems";
 
 function ItemsTable() {
   const { data } = useGetItems();
-  const transFormedData =  data!.content.map(({ unit, currency, ...rest }) => ({
-    ...rest,
-    quantity: `${rest.quantity} ${unit}`,
-    unitCost: `${currency} ${rest.unitCost}`,
-  }));
 
-  return (
-    <DataTable columns={columns} data={transFormedData} />
-  );
+  return <DataTable columns={columns} data={data!.content} />;
 }
 
 export default ItemsTable;
